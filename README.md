@@ -4,4 +4,4 @@ _Eduardo Huidobro_
 
 ## Gestion club deportivo
 
-![img.png](img.png)
+![img_1.png](img_1.png)
