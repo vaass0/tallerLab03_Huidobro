@@ -3,14 +3,23 @@ import java.util.*;
 public class Club {
 
 	private Collection<Deporte> deportes;
+	private Collection<Cancha> canchas;
+
+	public Club() {
+		this.deportes = new ArrayList<>();
+		this.canchas = new ArrayList<>();
+	}
 
 	/**
 	 * 
 	 * @param cancha
 	 */
 	public boolean agregarCancha(Cancha cancha) {
-		// TODO - implement Club.agregarCancha
-		throw new UnsupportedOperationException();
+		if(cancha.getUbicacion() != null){
+			canchas.add(cancha);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -18,35 +27,10 @@ public class Club {
 	 * @param deporte
 	 */
 	public boolean agregarDeporte(Deporte deporte) {
-		// TODO - implement Club.agregarDeporte
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param deportista
-	 */
-	public boolean registrarDeportista(Deportista deportista) {
-		// TODO - implement Club.registrarDeportista
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param entrenador
-	 */
-	public boolean registrarEntrenador(Entrenador entrenador) {
-		// TODO - implement Club.registrarEntrenador
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param cancha
-	 */
-	public void obtenerHistorialCancha(Cancha cancha) {
-		// TODO - implement Club.obtenerHistorialCancha
-		throw new UnsupportedOperationException();
+		if(deporte.getNombre() != null){
+			deportes.add(deporte);
+			return true;
+		}return false;
 	}
 
 }

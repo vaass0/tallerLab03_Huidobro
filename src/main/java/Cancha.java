@@ -7,31 +7,80 @@ public class Cancha {
 	private String capacidadEspectadores;
 	private String ubicacion;
 
+	public Cancha(String capacidadEspectadores, String tipoDeSuperficie, String ubicacion) {
+		this.capacidadEspectadores = capacidadEspectadores;
+		this.partidos = new ArrayList<>();
+		this.tipoDeSuperficie = tipoDeSuperficie;
+		this.ubicacion = ubicacion;
+	}
+
+
+	/**
+	 *
+	 * @param partido
+	 */
+	public boolean crearPartido(Partido partido) {
+          if(partido.getCancha() == null){
+			  partido.setCancha(this);
+			  return true;
+		  }
+		  return false;
+	}
 	/**
 	 * 
 	 * @param partido
 	 */
 	public boolean reservarCancha(Partido partido) {
-		// TODO - implement Cancha.reservarCancha
-		throw new UnsupportedOperationException();
+		for (Partido match : partidos) {
+			if (match.getFecha().equals(partido.getFecha())) {
+				return false;
+			}
+		}
+		partidos.add(partido);
+		return true;
 	}
-
 	/**
 	 * 
 	 * @param fecha
 	 */
 	public boolean consultarDisponibilidad(String fecha) {
-		// TODO - implement Cancha.consultarDisponibilidad
-		throw new UnsupportedOperationException();
+		for (Partido partido : partidos) {
+			if (partido.getFecha().equals(fecha)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
-	/**
-	 * 
-	 * @param partido
-	 */
-	public boolean registrarUso(Partido partido) {
-		// TODO - implement Cancha.registrarUso
-		throw new UnsupportedOperationException();
+	public String getCapacidadEspectadores() {
+		return capacidadEspectadores;
 	}
 
+	public void setCapacidadEspectadores(String capacidadEspectadores) {
+		this.capacidadEspectadores = capacidadEspectadores;
+	}
+
+	public Collection<Partido> getPartidos() {
+		return partidos;
+	}
+
+	public void setPartidos(Collection<Partido> partidos) {
+		this.partidos = partidos;
+	}
+
+	public String getTipoDeSuperficie() {
+		return tipoDeSuperficie;
+	}
+
+	public void setTipoDeSuperficie(String tipoDeSuperficie) {
+		this.tipoDeSuperficie = tipoDeSuperficie;
+	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
 }

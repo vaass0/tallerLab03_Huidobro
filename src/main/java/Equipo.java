@@ -3,29 +3,65 @@ import java.util.*;
 public class Equipo {
 
 	private Collection<Deportista> deportistas;
+
+	public Entrenador getEntrenador() {
+		return entrenador;
+	}
+
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+	}
+
+	private Entrenador entrenador;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	private String nombre;
+
+	public Equipo( String nombre) {
+		this.deportistas = new ArrayList<>();
+		this.nombre = nombre;
+	}
 
 	/**
 	 * 
 	 * @param deportista
 	 */
 	public boolean agregarDeportista(Deportista deportista) {
-		// TODO - implement Equipo.agregarDeportista
-		throw new UnsupportedOperationException();
+		if (deportista.getEquipo() == null){
+			deportistas.add(deportista);
+			deportista.setEquipo(this);
+			return true;
+		}
+		return false;
 	}
 
 	/**
 	 * 
-	 * @param entrenador
+	 * @param trainer
 	 */
-	public boolean agregarEntrenador(Entrenador entrenador) {
-		// TODO - implement Equipo.agregarEntrenador
-		throw new UnsupportedOperationException();
+	public boolean agregarEntrenador(Entrenador trainer) {
+		if (trainer.getEquipo() == null){
+			setEntrenador(trainer);
+			trainer.setEquipo(this);
+			return true;
+		}
+		return false;
 	}
 
 	public boolean eliminarEntrenador() {
-		// TODO - implement Equipo.eliminarEntrenador
-		throw new UnsupportedOperationException();
+		if(getEntrenador() != null){
+			setEntrenador(null);
+			return true;
+		}
+		return false;
+
 	}
 
 	/**
@@ -34,8 +70,12 @@ public class Equipo {
 	 * @param apellido
 	 */
 	public boolean eliminarDeportista(String nombre, String apellido) {
-		// TODO - implement Equipo.eliminarDeportista
-		throw new UnsupportedOperationException();
+		for(Deportista player: deportistas){
+			if(player.getNombre().equals(nombre) && player.getApellido().equals(apellido)){
+				deportistas.remove(player);
+				return true;
+			}
+		}return false;
 	}
 
 }

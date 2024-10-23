@@ -3,29 +3,49 @@ import java.util.*;
 public class Deporte {
 
 	private Collection<Equipo> equipos;
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	private String nombre;
+
+	public Deporte( String nombre) {
+		this.equipos = new ArrayList<>();
+		this.nombre = nombre;
+	}
 
 	/**
 	 * 
 	 * @param equipo
 	 */
 	public boolean agregarEquipo(Equipo equipo) {
-		// TODO - implement Deporte.agregarEquipo
-		throw new UnsupportedOperationException();
+		for(Equipo team : equipos){
+			if(team.getNombre().equals(equipo.getNombre())){
+				return false;
+			}
+		}
+		equipos.add(equipo);
+		return true;
 	}
 
 	public boolean eliminarEquipo() {
-		// TODO - implement Deporte.eliminarEquipo
-		throw new UnsupportedOperationException();
+		Scanner scanner = new Scanner(System.in);
+		String nombre;
+		System.out.println("Ingrese nombre del equipo: ");
+		nombre = scanner.nextLine();
+		for(Equipo team : equipos){
+			if (team.getNombre().equals(nombre)){
+				equipos.remove(team);
+				return true;
+			}
+		}return false;
 	}
 
-	/**
-	 * 
-	 * @param partido
-	 */
-	public boolean crearPartido(Partido partido) {
-		// TODO - implement Deporte.crearPartido
-		throw new UnsupportedOperationException();
-	}
+
 
 }
